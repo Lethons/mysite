@@ -1,0 +1,68 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block nav %}
+<li><a href="{% url 'index' %}" class="hvr-underline-from-left"><i class="home1"></i>Home</a></li>
+<li><a href="photos.html" class="hvr-underline-from-left"><i class="picture1"></i>Photos</a></li>
+<li class="active"><a href="{% url 'blog_list' %}"><i class="edit"></i>Blog</a></li>
+<li><a href="short-codes.html" class="hvr-underline-from-left"><i class="text-size1"></i>About Me</a></li>
+<li><a href="mail.html" class="hvr-underline-from-left"><i class="envelope1"></i>Mail Me</a></li>
+{% endblock %}
+
+{% block msg-text %}
+    <div class="gallery-head">
+        <h5>Blog</h5>
+    </div>
+    <div class="blog">
+        <div class="blog-grid">
+            <div class="col-xs-4 blog-grid-left">
+                <a href="single.html"><img src="{% static 'images/1.jpeg' %}" alt=" " class="img-responsive" /></a>
+            </div>
+            <div class="col-xs-8 blog-grid-right">
+                <h4><a href="single.html">sint occaecat cupidatat non proident</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation.</p>
+                <a href="single.html"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="blog-grid">
+            <div class="col-xs-4 blog-grid-left">
+                <a href="single.html"><img src="{% static 'images/2.jpg' %}" alt=" " class="img-responsive" /></a>
+            </div>
+            <div class="col-xs-8 blog-grid-right">
+                <h4><a href="single.html">Sed ut perspiciatis unde omnis iste natus</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation.</p>
+                <a href="single.html"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="blog-grid">
+            <div class="col-xs-4 blog-grid-left">
+                <a href="single.html"><img src="{% static 'images/3.jpg' %}" alt=" " class="img-responsive" /></a>
+            </div>
+            <div class="col-xs-8 blog-grid-right">
+                <h4><a href="single.html">At vero eos et accusamus et iusto odio</a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation.</p>
+                <a href="single.html"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="text-center">
+            <ul class="pagination">
+                <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+            </ul>
+    </div>
+{% endblock %}

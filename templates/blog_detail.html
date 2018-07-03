@@ -1,0 +1,28 @@
+{% extends 'blog_list.html' %}
+
+{% block nav %}
+    <li><a href="{% url 'index' %}" class="hvr-underline-from-left"><i class="home1"></i>Home</a></li>
+    <li><a href="photos.html" class="hvr-underline-from-left"><i class="picture1"></i>Photos</a></li>
+    <li><a href="{% url 'blog_list' %}" class="hvr-underline-from-left"><i class="edit1"></i>Blog</a></li>
+    <li><a href="short-codes.html" class="hvr-underline-from-left"><i class="text-size1"></i>About Me</a></li>
+    <li><a href="mail.html" class="hvr-underline-from-left"><i class="envelope1"></i>Mail Me</a></li>
+{% endblock %}
+
+
+{% block right_bottom %}
+<div class="col-xs-9 banner-body-right">
+    <!-- single -->
+    <div class="single">
+        <h3>Nulla Quis lorum nisl tempus convallis quis ac lactus</h3>
+        <div class="single-left">
+            <p>Published on <span>March,2016</span></p>
+        </div>
+        <div class="clearfix"> </div>
+        <p class="tortor">There are many variations of passages of Lorem Ipsum available,
+            but the majority have suffered alteration in some form, by injected humour,
+            or randomised words which don't look even slightly believable. If you are going
+            to use a passage.Nulla Quis lorum nisl tempus convallis quis ac lactus.Sed porttitorlactus nibh
+            eget tortor risus.Nulla porttitor accumsan tincidunt.</p>
+    </div>
+</div>
+{% endblock %}

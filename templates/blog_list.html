@@ -9,50 +9,92 @@
 <li><a href="mail.html" class="hvr-underline-from-left"><i class="envelope1"></i>Mail Me</a></li>
 {% endblock %}
 
-{% block msg-text %}
-    <div class="gallery-head">
-        <h5>Blog</h5>
+{% block left_middle %}
+    <div class="latest-news">
+        <h2>Latest News</h2>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Michael Vol
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry.
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Andrew Rich
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry.
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Rita Rock
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cat-grid">
+            <h3>Blog's Tags</h3>
+            <div class="top-social-icons">
+                    <a href="#">Cards</a>
+                    <a href="#">Website</a>
+                    <a href="#">Icons</a>
+                <div class="clearfix"> </div>
+                    <a href="#">Themeforest</a>
+                    <a href="#">Interfaces</a>
+                <div class="clearfix"> </div>
+                    <a href="#">Inspiration</a>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block right_top %}
+{# don't show right top #}
+{% endblock %}
+
+{% block right_bottom %}
+<div class="col-xs-9 banner-body-right">
+    <div class="gallery-head text-center">
+        <h5>Blog List</h5>
     </div>
     <div class="blog">
-        <div class="blog-grid">
-            <div class="col-xs-4 blog-grid-left">
-                <a href="single.html"><img src="{% static 'images/1.jpeg' %}" alt=" " class="img-responsive" /></a>
+        {% for blog in blogs %}
+            <div class="blog-grid">
+                <div class="col-xs-4 blog-grid-left">
+                    <a href="{% url 'blog_detail' %}" target="_blank"><img src="/media/{{ blog.image }}" alt=" " class="img-responsive" /></a>
+                </div>
+                <div class="col-xs-8 blog-grid-right">
+                    <h4><a href="blog_detail.html">{{ blog.title }}</a></h4>
+                    <p>{{ blog.content|truncatechars:100 }}</p>
+                    <a href="blog_detail.html"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></a>
+                </div>
             </div>
-            <div class="col-xs-8 blog-grid-right">
-                <h4><a href="single.html">sint occaecat cupidatat non proident</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation.</p>
-                <a href="single.html"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></a>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-        <div class="blog-grid">
-            <div class="col-xs-4 blog-grid-left">
-                <a href="single.html"><img src="{% static 'images/2.jpg' %}" alt=" " class="img-responsive" /></a>
-            </div>
-            <div class="col-xs-8 blog-grid-right">
-                <h4><a href="single.html">Sed ut perspiciatis unde omnis iste natus</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation.</p>
-                <a href="single.html"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></a>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-        <div class="blog-grid">
-            <div class="col-xs-4 blog-grid-left">
-                <a href="single.html"><img src="{% static 'images/3.jpg' %}" alt=" " class="img-responsive" /></a>
-            </div>
-            <div class="col-xs-8 blog-grid-right">
-                <h4><a href="single.html">At vero eos et accusamus et iusto odio</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation.</p>
-                <a href="single.html"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></a>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
+        {% endfor %}
     </div>
     <div class="text-center">
             <ul class="pagination">
@@ -65,4 +107,5 @@
                 <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
             </ul>
     </div>
+</div>
 {% endblock %}

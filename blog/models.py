@@ -15,7 +15,7 @@ class Blog(models.Model):
     publish_time = models.DateField(default=datetime.now)
     update_time = models.DateField(auto_now=True)
     tag = models.ForeignKey(Tag, on_delete=models.DO_NOTHING)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='blog/%Y/%m/%d')
     is_commend = models.BooleanField(default=False)
 
     def __str__(self):

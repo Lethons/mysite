@@ -202,7 +202,7 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
 	border-bottom:1px solid #E0BD62;
 }
 .latest-news h3{
-	margin:2em 0 0 !important;
+	/*margin:2em 0 0 !important;*/
 }
 .panel-group {
     margin: 2em 0;
@@ -748,7 +748,8 @@ figure.effect-winston:hover figcaption::before {
 	color:#E0BD62;
     font-size: 14px;
     font-style: italic;
-    margin: 0.5em 0 2em;
+    /*margin: 0.5em 0;*/
+	margin-top: 0.5em;
 }
 .single-left p span{
 	font-size:18px;
@@ -799,8 +800,12 @@ figure.effect-winston:hover figcaption::before {
 	}
 .cat-grid{
 	float:left;
-	width:33.33%;
+	/*width:33.33%;*/
+	width: 100%;
 	text-align: center;
+	}
+.cat-grid h3{
+	text-align: left; !important;
 	}
 .cat-grid h4{
 	color:#E0BD62;
@@ -835,7 +840,7 @@ figure.effect-winston:hover figcaption::before {
 	background-color:#D57D39;
 	}
 .top-social-icons {
-	margin-top: 3em;
+	margin-top: 2em;
 	}
 .three-com h3{
 	color: #E49B24;
@@ -1589,7 +1594,7 @@ h2.typoh2{
 		font-size: 1.2em;
 	}
 	.panel-group {
-		margin: 1em 0;
+		/*margin: 1em 0;*/
 	}
 	.panel-body {
 		padding: 4px;

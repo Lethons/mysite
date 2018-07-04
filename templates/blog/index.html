@@ -21,6 +21,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Comfortaa:400,300,700' rel='stylesheet' type='text/css'>
+<style type="text/css">
+    .my-latest-news a:hover{
+        color: #D37E3D;
+    }
+    .my-latest-news a{
+        color: #979A9A;
+    }
+</style>
 </head>
 	
 <body>
@@ -67,24 +75,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-xs-9 banner-body-right">
                     <div class="wmuSlider example1">
                         <div class="wmuSliderWrapper">
-                            <article style="position: absolute; width: 100%; opacity: 0;">
-                                <div class="banner-wrap">
-                                    <div class="banner">
+                            {% for blog in blogs|slice:":3" %}
+                                <article style="position: absolute; width: 100%; opacity: 0;">
+                                    <div class="banner-wrap">
+                                        {# image switching #}
+                                        <a href="{% url 'blog_detail' blog.pk %}">
+                                            <div style="min-height:400px;background:url(../../media/{{ blog.image }}) no-repeat 0px 0px;background-size:cover;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;-ms-background-size:cover;"></div>
+                                        </a>
                                     </div>
-                                </div>
-                            </article>
-                            <article style="position: absolute; width: 100%; opacity: 0;">
-                                <div class="banner-wrap">
-                                    <div class="banner1">
-                                    </div>
-                                </div>
-                            </article>
-                            <article style="position: absolute; width: 100%; opacity: 0;">
-                                <div class="banner-wrap">
-                                    <div class="banner2">
-                                    </div>
-                                </div>
-                            </article>
+                                </article>
+                            {% endfor %}
                         </div>
                     </div>
                         <script src="{% static 'js/jquery.wmuSlider.js' %}"></script>
@@ -139,49 +139,57 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="latest-news">
 					<h2>Latest News</h2>
 					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-					  <div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingOne">
-						  <h4 class="panel-title">
-							<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							  Michael Vol
-							</a>
-						  </h4>
-						</div>
-						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-						  <div class="panel-body">
-							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry.
-						  </div>
-						</div>
-					  </div>
-					  <div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingTwo">
-						  <h4 class="panel-title">
-							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-							  Andrew Rich
-							</a>
-						  </h4>
-						</div>
-						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-						  <div class="panel-body">
-							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry.
-						  </div>
-						</div>
-					  </div>
-					  <div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingThree">
-						  <h4 class="panel-title">
-							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-							  Rita Rock
-							</a>
-						  </h4>
-						</div>
-						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-						  <div class="panel-body">
-							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry.
-						  </div>
-						</div>
-					  </div>
-					</div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <strong>最新博客</strong>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <ul>
+                                        {% for blog in blogs|slice:":5" %}
+                                            <li class="my-latest-news">
+                                                <a href="{% url 'blog_detail' blog.pk %}" class="glyphicon glyphicon-ice-lolly-tasted" aria-hidden="true">
+                                                    {{ blog.title|truncatechars:10 }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <strong>热门博客</strong>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <strong>博客推荐</strong>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="cat-grid">
                         <h3>Blog's Tags</h3>
                         <div class="top-social-icons">
@@ -199,6 +207,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 			</div>
             {% endblock %}
+
             {% block right_bottom %}
                 <div class="col-xs-9 banner-body-right">
                     <div class="msg-text">
@@ -213,43 +222,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="clearfix"> </div>
                     </div>
                     <div class="msg-text-bottom">
-                        <div class="col-md-4 msg-text-bottom-left">
-                            <figure class="effect-winston">
-                                <a href="blog_detail.html"><img src="{% static 'images/4.jpg' %}" alt=" " class="img-responsive" />
-                                <figcaption>
+                        {% for blog in blogs|slice:":3" %}
+                            <div class="col-md-4 msg-text-bottom-left">
+                                <figure class="effect-winston">
+                                    <a href="blog_detail.html"><img src="/media/{{ blog.image }}" alt=" " class="img-responsive" />
+                                    <figcaption></figcaption>
+                                    </a>
+                                </figure>
 
-                                </figcaption>
-                                </a>
-                            </figure>
-
-                            <h3><a href="blog_detail.html">vel illum qui dolorem</a></h3>
-                            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                consectetur, adipisci velit, sed quia.</p>
-                        </div>
-                        <div class="col-md-4 msg-text-bottom-left">
-                            <figure class="effect-winston">
-                                <a href="blog_detail.html"><img src="{% static 'images/5.jpg' %}" alt=" " class="img-responsive" />
-                                <figcaption>
-
-                                </figcaption>
-                                </a>
-                            </figure>
-                            <h3><a href="blog_detail.html">quia dolor sit amet</a></h3>
-                            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                consectetur, adipisci velit, sed quia.</p>
-                        </div>
-                        <div class="col-md-4 msg-text-bottom-left">
-                            <figure class="effect-winston">
-                                <a href="blog_detail.html"><img src="{% static 'images/6.jpg' %}" alt=" " class="img-responsive" />
-                                <figcaption>
-
-                                </figcaption>
-                                </a>
-                            </figure>
-                            <h3><a href="blog_detail.html">porro quisquam est</a></h3>
-                            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                consectetur, adipisci velit, sed quia.</p>
-                        </div>
+                                <h3><a href="blog_detail.html">{{ blog.title }}</a></h3>
+                                <p>{{ blog.content|truncatechars:80 }}</p>
+                            </div>
+                        {% endfor %}
                         <div class="clearfix"> </div>
                     </div>
 			    </div>
@@ -282,5 +266,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- for bootstrap working -->
 	<script src="{% static 'js/bootstrap.js' %}"></script>
 <!-- //for bootstrap working -->
+    {% block my_script %}{% endblock %}
 </body>
 </html>

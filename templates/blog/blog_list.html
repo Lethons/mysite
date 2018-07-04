@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends 'blog/index.html' %}
 {% load staticfiles %}
 
 {% block nav %}
@@ -17,7 +17,7 @@
                 <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Michael Vol
+                        <strong>最新博客</strong>
                     </a>
                   </h4>
                 </div>
@@ -31,7 +31,7 @@
                 <div class="panel-heading" role="tab" id="headingTwo">
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Andrew Rich
+                            <strong>热门博客</strong>
                         </a>
                     </h4>
                 </div>
@@ -45,7 +45,7 @@
                 <div class="panel-heading" role="tab" id="headingThree">
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Rita Rock
+                            <strong>博客推荐</strong>
                         </a>
                     </h4>
                 </div>
@@ -59,9 +59,9 @@
         <div class="cat-grid">
             <h3>Blog's Tags</h3>
             <div class="top-social-icons">
-                    <a href="#">Cards</a>
-                    <a href="#">Website</a>
-                    <a href="#">Icons</a>
+                {% for tag in tags|slice:":3" %}
+                    <a href="{% url 'comment_tag_list' tag %}">{{ tags.count }}</a>
+                {% endfor %}
                 <div class="clearfix"> </div>
                     <a href="#">Themeforest</a>
                     <a href="#">Interfaces</a>
@@ -80,31 +80,54 @@
 {% block right_bottom %}
 <div class="col-xs-9 banner-body-right">
     <div class="gallery-head text-center">
-        <h5>Blog List</h5>
+        {% block right-title %}
+            <h5>Blog List</h5>
+        {% endblock %}
     </div>
     <div class="blog">
         {% for blog in blogs %}
             <div class="blog-grid">
                 <div class="col-xs-4 blog-grid-left">
-                    <a href="{% url 'blog_detail' %}" target="_blank"><img src="/media/{{ blog.image }}" alt=" " class="img-responsive" /></a>
+                    <a href="{% url 'blog_detail' blog.pk %}"><img src="/media/{{ blog.image }}" alt=" " class="img-responsive" /></a>
                 </div>
                 <div class="col-xs-8 blog-grid-right">
-                    <h4><a href="blog_detail.html">{{ blog.title }}</a></h4>
+                    <h4>
+                        <a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}
+                            <span class="text-right" style="font-size: 14px; color: #E0BD62;">{{ blog.publish_time|date:'Y-m-d' }}</span>
+                        </a>
+                    </h4>
                     <p>{{ blog.content|truncatechars:100 }}</p>
-                    <a href="blog_detail.html"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></a>
+                    <hr>
                 </div>
             </div>
         {% endfor %}
     </div>
     <div class="text-center">
+            {#  page setting  #}
             <ul class="pagination">
-                <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                {% if blogs.has_previous %}
+                    <li><a href="?page={{ blogs.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                {% else %}
+                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                {% endif %}
+                {% if blogs.number > 3 %}
+                    <li><a href="?page=1" style="font-family: cursive;">首页</a></li>
+                {% endif %}
+                {% for page in page_range %}
+                    {% if blogs.number == page %}
+                        <li class="active"><a href="?page={{ page }}">{{ page }} <span class="sr-only">(current)</span></a></li>
+                    {% else %}
+                        <li><a href="?page={{ page }}">{{ page }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if page_range|last < pages.num_pages %}
+                    <li><a href="?page={{ pages.num_pages }}" style="font-family: cursive;">尾页</a></li>
+                {% endif %}
+                {% if blogs.has_next %}
+                    <li><a href="?page={{ blogs.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                {% else %}
+                    <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                {% endif %}
             </ul>
     </div>
 </div>

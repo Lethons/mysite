@@ -1,9 +1,3 @@
-/*--
-Author: 小贝壳网站模板
-Author URL: http://www.smallseashell.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
---*/
 html, body{
     font-size: 100%;
 	background:	#fff;
@@ -270,7 +264,7 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
 	-ms-background-size:cover;
 }
 .banner1{
-	background:url(../images/1.jpeg) no-repeat 0px 0px;
+	/*background:url(../images/1.jpeg) no-repeat 0px 0px;*/
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -278,7 +272,7 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
 	-ms-background-size:cover;
 }
 .banner2{
-	background:url(../images/3.jpg) no-repeat 0px 0px;
+	/*background:url(../images/3.jpg) no-repeat 0px 0px;*/
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;

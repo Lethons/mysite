@@ -17,34 +17,53 @@ def blog_paginator(req, blogs):
     return ctx
 
 
-
-def index(request):
+def left_comment_date():
+    """ get left part comment date """
     ctx = {}
+    tags = Tag.objects.all()
+    commend_blogs = Blog.objects.filter(is_commend=True)
+    ctx['tags'] = tags
+    ctx['commend_blogs'] = commend_blogs
+    return ctx
+
+
+def home(request):
     blogs = Blog.objects.all()
+    ctx = left_comment_date()
     ctx['blogs'] = blogs
     return render_to_response('blog/index.html', ctx)
 
 
 def blog_list(request):
-    tags = Tag.objects.all()
     blogs = Blog.objects.all()
-    ctx = blog_paginator(request, blogs)
-    ctx['tags'] = tags
+    ctx1 = blog_paginator(request, blogs)
+    ctx2 = left_comment_date()
+    ctx = dict(ctx1, **ctx2)
     return render_to_response('blog/blog_list.html', ctx)
 
 
 def comment_tag_list(request, blog_tag):
-    tags = Tag.objects.all()
     tag = get_object_or_404(Tag, tag=blog_tag)
     blogs = Blog.objects.filter(tag=tag)
-    ctx = blog_paginator(request, blogs)
-    ctx['tags'] = tags
+    ctx1 = blog_paginator(request, blogs)
+    ctx2 = left_comment_date()
+    ctx = dict(ctx1, **ctx2)
     ctx['tag'] = tag
     return render_to_response('blog/comment_tag_list.html', ctx)
 
 
 def blog_detail(request, blog_pk):
-    ctx = {}
     blog = get_object_or_404(Blog, pk=blog_pk)
+    blogs = Blog.objects.all()
+    ctx = left_comment_date()
+    ctx['blogs'] = blogs
     ctx['blog'] = blog
     return render_to_response('blog/blog_detail.html', ctx)
+
+
+def about_me(request):
+    return render_to_response('blog/about_me.html')
+
+
+def page_not_found(request):
+    return render_to_response('404.html')

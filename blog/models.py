@@ -1,5 +1,6 @@
-from django.db import models
 from datetime import datetime
+from django.db import models
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Tag(models.Model):
@@ -11,7 +12,7 @@ class Tag(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=20)
-    content = models.TextField()
+    content = RichTextUploadingField()
     publish_time = models.DateTimeField(default=datetime.now)
     update_time = models.DateTimeField(auto_now=True)
     tag = models.ForeignKey(Tag, on_delete=models.DO_NOTHING)

@@ -11,4 +11,5 @@ class TagAdmin(admin.ModelAdmin):
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
     list_display = ('title', 'tag', 'publish_time', 'update_time', 'is_commend')
+    list_editable = ['is_commend',]
     list_per_page = 20

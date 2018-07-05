@@ -21,12 +21,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Comfortaa:400,300,700' rel='stylesheet' type='text/css'>
+<link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
 <style type="text/css">
     .my-latest-news a:hover{
-        color: #D37E3D;
+        color: #979A9A;
     }
     .my-latest-news a{
-        color: #979A9A;
+        color: #D57D39;
     }
 </style>
 </head>
@@ -38,7 +39,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="banner-body-content">
 			<div class="col-xs-3 banner-body-left">
 				<div class="logo">
-					<h1><a href="{% url 'index' %}">Lethons' <span>Blog</span></a></h1>
+					<h1><a href="{% url 'home' %}">Lethons' <span>Blog</span></a></h1>
 				</div>
 				<div class="top-nav">
 					<nav class="navbar navbar-default">
@@ -57,11 +58,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<nav class="stroke">
 								<ul class="nav navbar-nav">
                                     {% block nav %}
-                                        <li class="active"><a href="{% url 'index' %}"><i class="home"></i>Home</a></li>
+                                        <li class="active"><a href="{% url 'home' %}"><i class="home"></i>Home</a></li>
                                         <li><a href="photos.html" class="hvr-underline-from-left"><i class="picture1"></i>Photos</a></li>
                                         <li><a href="{% url 'blog_list' %}" class="hvr-underline-from-left"><i class="edit1"></i>Blog</a></li>
-                                        <li><a href="short-codes.html" class="hvr-underline-from-left"><i class="text-size1"></i>About Me</a></li>
-                                        <li><a href="mail.html" class="hvr-underline-from-left"><i class="envelope1"></i>Mail Me</a></li>
+                                        <li><a href="{% url 'about_me' %}" class="hvr-underline-from-left"><i class="text-size1"></i>About Me</a></li>
+{#                                        <li><a href="mail.html" class="hvr-underline-from-left"><i class="envelope1"></i>Mail Me</a></li>#}
                                     {% endblock %}
 								</ul>
 							</nav>
@@ -75,7 +76,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-xs-9 banner-body-right">
                     <div class="wmuSlider example1">
                         <div class="wmuSliderWrapper">
-                            {% for blog in blogs|slice:":3" %}
+                            {% for blog in commend_blogs|slice:":3" %}
                                 <article style="position: absolute; width: 100%; opacity: 0;">
                                     <div class="banner-wrap">
                                         {# image switching #}
@@ -152,7 +153,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <ul>
                                         {% for blog in blogs|slice:":5" %}
                                             <li class="my-latest-news">
-                                                <a href="{% url 'blog_detail' blog.pk %}" class="glyphicon glyphicon-ice-lolly-tasted" aria-hidden="true">
+                                                <a href="{% url 'blog_detail' blog.pk %}" class="glyphicon glyphicon-globe" aria-hidden="true">
                                                     {{ blog.title|truncatechars:10 }}
                                                 </a>
                                             </li>
@@ -185,7 +186,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                 <div class="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry.
+                                    <ul>
+                                        {% for blog in commend_blogs|slice:":5" %}
+                                            <li class="my-latest-news">
+                                                <a href="{% url 'blog_detail' blog.pk %}" class="glyphicon glyphicon-cloud-upload" aria-hidden="true">
+                                                    {{ blog.title|truncatechars:10 }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -193,14 +202,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="cat-grid">
                         <h3>Blog's Tags</h3>
                         <div class="top-social-icons">
-                                <a href="#">Cards</a>
-                                <a href="#">Website</a>
-                                <a href="#">Icons</a>
+                            {% for tag in tags|slice:":3" %}
+                                <a href="{% url 'comment_tag_list' tag %}">{{ tag }}</a>
+                            {% endfor %}
                             <div class="clearfix"> </div>
-                                <a href="#">Themeforest</a>
-                                <a href="#">Interfaces</a>
+                            {% for tag in tags|slice:"3:5" %}
+                                <a href="{% url 'comment_tag_list' tag %}">{{ tag }}</a>
+                            {% endfor %}
                             <div class="clearfix"> </div>
-                                <a href="#">Inspiration</a>
+                            {% for tag in tags|slice:"5:6" %}
+                                <a href="{% url 'comment_tag_list' tag %}">{{ tag }}</a>
+                            {% endfor %}
                             <div class="clearfix"> </div>
                         </div>
                     </div>
@@ -225,13 +237,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         {% for blog in blogs|slice:":3" %}
                             <div class="col-md-4 msg-text-bottom-left">
                                 <figure class="effect-winston">
-                                    <a href="blog_detail.html"><img src="/media/{{ blog.image }}" alt=" " class="img-responsive" />
+                                    <a href="{% url 'blog_detail' blog.pk %}"><img src="/media/{{ blog.image }}" alt=" " class="img-responsive" />
                                     <figcaption></figcaption>
                                     </a>
                                 </figure>
 
-                                <h3><a href="blog_detail.html">{{ blog.title }}</a></h3>
-                                <p>{{ blog.content|truncatechars:80 }}</p>
+                                <h3><a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a></h3>
+                                <p>{{ blog.content|striptags|truncatechars:80 }}</p>
                             </div>
                         {% endfor %}
                         <div class="clearfix"> </div>

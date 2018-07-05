@@ -1,11 +1,14 @@
 from django.urls import path
+from django.conf.urls import handler404
 from . import views
-from django.conf import settings
-from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('blog', views.blog_list, name='blog_list'),
+    path('', views.home),
+    path('home/', views.home, name='home'),
+    path('blog/', views.blog_list, name='blog_list'),
     path('blog/<int:blog_pk>', views.blog_detail, name='blog_detail'),
     path('blog/<blog_tag>', views.comment_tag_list, name='comment_tag_list'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('aboutme', views.about_me, name='about_me'),
+]
+
+handler404 = views.page_not_found

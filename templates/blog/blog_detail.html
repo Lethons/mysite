@@ -2,10 +2,10 @@
 
 {% block nav %}
     <li><a href="{% url 'home' %}" class="hvr-underline-from-left"><i class="home1"></i>Home</a></li>
-    <li><a href="photos.html" class="hvr-underline-from-left"><i class="picture1"></i>Photos</a></li>
+    <li><a href="{% url 'photos' %}" class="hvr-underline-from-left"><i class="picture1"></i>Photos</a></li>
     <li><a href="{% url 'blog_list' %}" class="hvr-underline-from-left"><i class="edit1"></i>Blog</a></li>
-    <li><a href="short-codes.html" class="hvr-underline-from-left"><i class="text-size1"></i>About Me</a></li>
-    <li><a href="mail.html" class="hvr-underline-from-left"><i class="envelope1"></i>Mail Me</a></li>
+    <li><a href="{% url 'about_me' %}" class="hvr-underline-from-left"><i class="text-size1"></i>About Me</a></li>
+    <li><a href="{% url 'contact_me' %}" class="hvr-underline-from-left"><i class="envelope1"></i>Contact Me</a></li>
 {% endblock %}
 
 

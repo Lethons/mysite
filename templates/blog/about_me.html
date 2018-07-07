@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Magazee HTML5 Template Mo</title>
+  <title>Lethons' blog</title>
   <!-- load CSS -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">    <!-- Google web font "Open Sans" -->
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">                                        <!-- https://getbootstrap.com/ -->
@@ -44,7 +44,9 @@
   </div>
   <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
     <div class="tm-flex-center p-5">
-      <q class="tm-quote tm-text-color-gray">Ut sit amet augue elit. Vivamus eget tortor in ante scelerisque gravida. Vestibulum auctor condimentum sem.</q>
+      <q class="tm-quote tm-text-color-gray">
+          如果有来生， 要做一棵树， 站成永恒， 没有悲欢的姿势。 一半在土里安详， 一半在风里飞扬， 一半洒落阴凉， 一半沐浴阳光， 非常沉默非常骄傲， 从不依靠，从不寻找。
+      </q>
     </div>
   </div>
 </section>
@@ -54,9 +56,8 @@
  <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
   <div class="tm-flex-center p-5">
     <div class="tm-md-flex-center">
-      <h2 class="tm-text-color-primary mb-4">Fusce ac enim at justo</h2>
-      <p class="mb-4">Pellentesque sagittis feugiat massa, vitae blandit elit dictum in. Nam eleifend nunc dui, sed cusus justo molestie id. Vestibulum vel sagittis justo.</p>
-{#      <a href="#" class="btn btn-primary float-lg-right tm-md-align-center">Read more</a>#}
+      <h2 class="tm-text-color-primary mb-4">Where am I from?</h2>
+      <p class="mb-4 tm-quote">这一生， 有太多的东西想学， 太多的地方想看， 太多的经历觉得不能错过。 但时光一年一年的过去， 剩下的时间越来越少。</p>
     </div>
   </div>
 </div>
@@ -64,7 +65,7 @@
   <div class="tm-flex-center p-5 tm-bg-color-primary">
     <div class="tm-max-w-400 tm-flex-center tm-flex-col">
       <img src="{% static 'images/image-04.jpg' %}" alt="Image" class="rounded-circle mb-4">
-      <p class="tm-text-color-white small tm-font-thin mb-0">Nullam eleifend, ipsum eu aliquet fermentum , odio urna dignissim ante, semper maximus libero nisl non nibh.</p>
+      <p class="tm-text-color-white small tm-font-thin mb-0">We can only see a short distance ahead, but we can see plenty there that needs to be done.</p>
     </div>
   </div>
 </div>
@@ -78,9 +79,8 @@
   <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
     <div class="tm-flex-center p-5">
       <div class="tm-flex-center tm-flex-col">
-        <h2 class="tm-align-left">Loerm ipsum dolor sit amet</h2>
-        <p>This is one-page HTML5 template that you can use for any purpose. Please tell your friends about <a href="#" target="_parent">TemplateMo</a> website. Thank you.</p>
-{#        <a href="#" class="btn btn-primary">Read More</a>#}
+        <h2 class="tm-align-left">Where should I go?</h2>
+        <p class="tm-quote">学着主宰自己的生活； 即使孑然一身， 也不算一个太坏的局面。 不自怜、 不自卑、 不怨叹， 一日一日来， 一步一步走， 那份柳暗花明的喜乐和必然的抵达， 在于我们自己的修持。</p>
       </div>
     </div>
   </div>
@@ -91,11 +91,11 @@
  <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
   <div class="tm-flex-center pl-5 pr-5 pt-5 pb-5">
     <div class="tm-md-flex-center">
-     <h2 class="mb-4 tm-text-color-primary">Nullam auctor ornare finibus</h2>
-     <p>Cras eu dolor lorem. Cras justo mauris, rhoncus in mauris ac, pellentesque pulvinar metus. Suspendisse consectetur consequat diam, ac dignissim mauris gravida vitae. Vestibulum blandit vestibulum mi a viverra.</p>
-     <p class="mb-4">Fusce porta lectus vel elit condimentum porttitor. Maecenas at quam congue, sollicitudin risus quis, ultricies enim. Vivamus sodales, tellus ac quismod dignissim, metus ligula porttitor enim.</p>
-     <p class="mb-4">Sed fermentum odio mollis libero iaculis ultrices. Mauris et nibh mi. Nullam vel sapien dolor. Vestibulum ipsum quam, aliquet ac pharetra in, suscipit eu risus. Etiam rutrum eros ultrices, consectetur felis ultrices, vehicula purus.</p>
-     <a href="#" class="btn btn-primary float-lg-right tm-md-align-center">Read More</a>
+     <h2 class="mb-4 tm-text-color-primary">不忘初心，方得始终</h2>
+     <p class="tm-quote">当陷入低潮，再怎么执着也无法改变现状时，我们必须懂得适时舍弃的艺术，跳脱那些让我们痛苦不堪的人事物，才有可能再造生命的另一个春天！</p>
+     <p class="mb-4 tm-quote">沉淀后我愿意做一个温暖的人。有自己的喜好，有自己的原则，有自己的信仰，不急功近利，不浮夸轻薄，宠辱不惊，淡定安逸，心静如水。</p>
+     <p class="mb-4 tm-quote">真正重要的不是完美的结果，而是过程中自我内在的成长与丰盈。在爱与被爱的过程中让生命更丰盈、更充实，最后找到自己生命中属于幸福的那份答案。</p>
+     <a href="{% url 'home' %}" class="btn btn-primary float-lg-right tm-md-align-center">Return Home</a>
    </div>
  </div>
 </div>
@@ -104,141 +104,10 @@
 </div>
 </section>
 
-<!-- 5th Section -->
-<section class="row tm-section tm-mb-30">
-  <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 p-md-0 text-md-center text-center mb-4 mb-lg-0">
-   <img src="{% static 'images/image-03.jpg' %}" alt="Image" class="img-fluid">
- </div>
- <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 pl-lg-4 pr-xl-0 mb-4 mb-lg-0">
-  <div class="tm-flex-center">
-   <div class="tm-pricing-table">
-    <div class="tm-bg-color-secondary tm-text-color-white text-center tm-font-thin tm-pricing-header">
-      <p class="mb-0 tm-pricing-header-title">Standard Plan</p>
-      <p class="mb-0 tm-pricing-header-subtitle">($25 per month)</p>
-    </div>
-    <div class="tm-pricing-body">
-      <ul class="tm-feature-list">
-        <li>Ut sit amet augue elit</li>
-        <li>Vivamus eget tortor in ante</li>
-        <li>Scelerisque gravida</li>
-        <li>Vestibulum auctor</li>
-        <li>Condimentum sem</li>
-        <li>Suscipit arcu accumsan</li>
-      </ul>
-      <a href="#" class="btn btn-secondary">Buy now</a>
-    </div>
-  </div>
-</div>
-</div>
-<div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 pl-xl-0 mb-4 mb-lg-0">
-  <div class="tm-flex-center">
-   <div class="tm-pricing-table">
-    <div class="tm-bg-color-secondary tm-text-color-white text-center tm-font-thin tm-pricing-header">
-      <p class="mb-0 tm-pricing-header-title">Advanced Plan</p>
-      <p class="mb-0 tm-pricing-header-subtitle">($40 per month)</p>
-    </div>
-    <div class="tm-pricing-body">
-      <ul class="tm-feature-list">
-        <li>Vel eleifend enim</li>
-        <li>Morbi blandit metus</li>
-        <li>Fusce porta lectus vel elit</li>
-        <li>Cras eu dolor lorem</li>
-        <li>Pharetra et sapien</li>
-        <li>Quisque auctor non magna</li>
-      </ul>
-      <a href="#" class="btn btn-secondary">Buy now</a>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-
-<!-- 6th Section -->
-<section class="row">
-  <div class="col-lg-12 tm-form-header pl-5 pr-5">
-    <h2 class="tm-container-inner tm-text-color-white">Application Form</h2>
-  </div>
-  <div class="col-lg-12 pl-2 pl-sm-3 pl-md-5 pr-2 pr-sm-3 pr-md-5">
-    <form action="index.html" method="post" class="row tm-container-inner tm-contact-form">
-      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-        <div class="form-group">
-          <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Full Name"  required/>
-        </div>
-        <div class="form-group">
-          <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Your Email"  required/>
-        </div>
-        <div class="form-group">
-          <select>
-            <option value="">Position</option>
-            <option value="ceo">Chief Executive Officer</option>
-            <option value="ms">Marketing Specialist</option>
-            <option value="om">Operating Manager</option>
-            <option value="sa">Sales Assistant</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <select>
-            <option value="">Salary</option>
-            <option value="100k">$100,000-$140,000</option>
-            <option value="200k">$200,000-$260,000</option>
-            <option value="300k">$300,000-$375,000</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-        <div class="form-group">
-          <div class="row">
-            <div class="col-lg-6">
-              <label>
-                <input type="radio" name="gender" value="m" required> Male
-              </label>
-            </div>
-            <div class="col-lg-6">
-              <label>
-                <input type="radio" name="gender" value="f" required> Female
-              </label>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <textarea id="contact_message" name="contact_message" class="form-control" rows="6" placeholder="Additional Message" required></textarea>
-        </div>
-      </div>
-      <div class="col-xs-12 mt-4 tm-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
-  </div>
-  <div class="tlinks">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
-  <div class="col-lg-12 tm-bg-color-gray tm-text-color-white tm-font-thin tm-form-footer">
-    <div class="row tm-container-inner">
-      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-        <div class="tm-footer-info-box">
-          <h4>Lorem ipsum dolor</h4>
-          <address>
-            1010 Vivamaus viverra<br>
-            Leo vel porttitor sodales<br>
-            Non eleifend 10980
-          </address>
-        </div>
-      </div>
-      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-        <div class="tm-footer-info-box">
-          <p>Maecenas fermentum<br>
-          Nam eu justo et urna<br>
-          Semper maximus libero<br>
-          Etiam magna quam</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Footer -->
 <div class="row">
   <div class="col-lg-12">
-    <p class="text-center small tm-copyright-text mb-0">Copyright &copy; <span class="tm-current-year">2018</span> Your Company Name | Designed by <a href="" class="tm-text-color-gray" target="_parent">Template Mo</a></p>
-    <p>More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+    <p class="text-center small tm-copyright-text mb-0">Copyright &copy; <span class="tm-current-year">2018</span> Lethons | Designed by <a href="" class="tm-text-color-gray" target="_parent">Template Mo</a></p>
   </div>
 </div>
 </div>

@@ -1,0 +1,45 @@
+{% extends 'blog/index.html' %}
+{% load staticfiles %}
+
+{% block nav %}
+    <li><a href="{% url 'home' %}" class="hvr-underline-from-left"><i class="home1"></i>Home</a></li>
+    <li><a href="{% url 'photos' %}" class="hvr-underline-from-left"><i class="picture1"></i>Photos</a></li>
+    <li><a href="{% url 'blog_list' %}" class="hvr-underline-from-left"><i class="edit1"></i>Blog</a></li>
+    <li><a href="{% url 'about_me' %}" class="hvr-underline-from-left"><i class="text-size1"></i>About Me</a></li>
+    <li class="active"><a href="{% url 'contact_me' %}"><i class="envelope"></i>Contact Me</a></li>
+{% endblock %}
+
+
+{% block right_bottom %}
+    <div class="col-xs-9 banner-body-right">
+        <div class="gallery-head">
+            <h5>Mail Us</h5>
+            <p style="font-family: 楷体; font-size: 18px">可在下方留言，我将会在适当的时间回复您。</p>
+        </div>
+        <!-- mail -->
+        <div class="mail">
+            <div class="mail-grid1">
+                <h3>Contact <span>Info</span></h3>
+                <ul>
+                    <li><i class="glyphicon glyphicon-phone" aria-hidden="true"></i>Tim<span>834410151</span></li>
+                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email<a href="mailto:lethons@163.com">lethons@163.com</a></li>
+                </ul>
+                <ul>
+                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Address<span>PO Box 7784 Diamonds street, Los Angeles, California, US.</span></li>
+                </ul>
+            </div>
+            <div class="mail-grid1">
+                <h3>Send a <span>Message</span></h3>
+                <form action="{% url 'sublimt_message' %}" method="post">
+                    <input type="text" placeholder="Name" name="name" required=" ">
+                    <input type="email" placeholder="Email" name="email" required=" ">
+                    <div class="clearfix"> </div>
+                    <input type="text" placeholder="Subject" name="subject" required=" ">
+                    <textarea placeholder="Type Your Text Here...." name="message" required=" "></textarea>
+                    {% csrf_token %}  {# if this on front will product style error! #}
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -24,3 +24,18 @@ class Blog(models.Model):
 
     class Meta:
         ordering = ['-publish_time']
+
+
+class SublimtMessage(models.Model):
+    name = models.CharField(max_length=10)
+    email= models.EmailField()
+    subject = models.CharField(max_length=20)
+    message = models.TextField()
+    publish_time = models.DateTimeField(default=datetime.now)
+    is_show = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.subject
+
+    class Meta:
+        ordering = ['-publish_time']
